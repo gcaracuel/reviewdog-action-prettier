@@ -74,7 +74,7 @@ runs:
         INPUT_LEVEL: ${{ inputs.level }}
         INPUT_REPORTER: ${{ inputs.reporter }}
         INPUT_FILTER_MODE: ${{ inputs.filter_mode }}
-        INPUT_LEVEL: ${{ inputs.fail_level }}
+        INPUT_FAIL_LEVEL: ${{ inputs.fail_level }}
         INPUT_REVIEWDOG_FLAGS: ${{ inputs.reviewdog_flags }}
         INPUT_TOOL_NAME: ${{ inputs.tool_name }}
         INPUT_PRETTIER_FLAGS: ${{ inputs.prettier_flags }}
