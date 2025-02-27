@@ -7,7 +7,7 @@ cd "${GITHUB_WORKSPACE}/${INPUT_WORKDIR}" || exit 1
 # Install prettier
 if [ ! -f "$(npm root)"/.bin/prettier ]; then
   echo "::group::🔄 Running npm install to install prettier..."
-  npm install
+  npm install prettier
   echo "::endgroup::"
 fi
 
@@ -33,7 +33,7 @@ if [ "$INPUT_REPORTER" = "github-pr-review" ]; then
       -name="${INPUT_TOOL_NAME}" \
       -reporter="${INPUT_REPORTER}" \
       -filter-mode="${INPUT_FILTER_MODE}" \
-      -fail-on-error="${INPUT_FAIL_ON_ERROR}" \
+      -fail-level="${INPUT_FAIL_LEVEL}" \
       -level="${INPUT_LEVEL}" \
       "${INPUT_REVIEWDOG_FLAGS}"
 # else run prettier in check mode and report warnings and errors
@@ -51,7 +51,7 @@ else
       -name="${INPUT_TOOL_NAME}" \
       -reporter="${INPUT_REPORTER}" \
       -filter-mode="${INPUT_FILTER_MODE}" \
-      -fail-on-error="${INPUT_FAIL_ON_ERROR}" \
+      -fail-level="${INPUT_FAIL_LEVEL}" \
       -level="${INPUT_LEVEL}" \
       "${INPUT_REVIEWDOG_FLAGS}"
 fi

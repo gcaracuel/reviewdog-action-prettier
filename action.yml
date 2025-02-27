@@ -35,10 +35,9 @@ inputs:
       Default is `added`.
     default: 'added'
     required: false
-  fail_on_error:
+  fail_level:
     description: |
-      Exit code for reviewdog when errors are found [true,false].
-      Default is `false`.
+      Exit with code 1 if it finds at least 1 issue with severity greater than or equal to the given level. [none(default),any,info,warning,error]
     default: 'false'
     required: false
   reviewdog_flags:
@@ -75,7 +74,7 @@ runs:
         INPUT_LEVEL: ${{ inputs.level }}
         INPUT_REPORTER: ${{ inputs.reporter }}
         INPUT_FILTER_MODE: ${{ inputs.filter_mode }}
-        INPUT_FAIL_ON_ERROR: ${{ inputs.fail_on_error }}
+        INPUT_LEVEL: ${{ inputs.fail_level }}
         INPUT_REVIEWDOG_FLAGS: ${{ inputs.reviewdog_flags }}
         INPUT_TOOL_NAME: ${{ inputs.tool_name }}
         INPUT_PRETTIER_FLAGS: ${{ inputs.prettier_flags }}
@@ -86,7 +85,7 @@ runs:
         tool_name: ${{ inputs.tool_name }}
         level: ${{ inputs.level }}
         filter_mode: ${{ inputs.filter_mode }}
-        fail_on_error: ${{ inputs.fail_on_error }}
+        fail_level: ${{ inputs.fail_level }}
         reviewdog_flags: ${{ inputs.reviewdog_flags }}
 
 # Ref: https://haya14busa.github.io/github-action-brandings/
